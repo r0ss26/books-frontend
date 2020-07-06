@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from './http-common';
 import { Link } from 'react-router-dom';
 
 import DeleteBook from './DeleteBook';
@@ -9,12 +9,12 @@ const ViewBooks = () => {
   const [booksState, setBooksState] = useState(null);
 
   const getBooks = async () => {
-    let response = await axios.get(`http://localhost:3000/books`);
+    let response = await axios.get(`/books`);
     setBooksState(response.data);
   };
 
   const deleteBook = async (id) => {
-    await axios.delete(`http://localhost:3000/books/${id}`)
+    await axios.delete(`/books/${id}`)
     setBooksState(booksState.filter((book) => book.id !== id))
   }
 

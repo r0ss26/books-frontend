@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import axios from './http-common';
 import { Link } from 'react-router-dom';
 
 const ViewBook = (props) => {
@@ -8,7 +8,7 @@ const ViewBook = (props) => {
 
   const getBook = async () => {
     try {
-      let response = await axios.get(`http://localhost:3000/books/${props.match.params.id}`);
+      let response = await axios.get(`/books/${props.match.params.id}`);
       setBookState(response.data);
     } catch(error) {
       setErrorState(error.message);
